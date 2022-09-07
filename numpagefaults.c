@@ -3,7 +3,6 @@
 #include <linux/init.h>      // included for __init and __exit macros
 #include <linux/seq_file.h>
 #include <linux/vmstat.h>   // 
-#include <stdio.h>          // for printf
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("PaulRobertDavis");
@@ -16,7 +15,7 @@ static int __init numpagefaults_init(void)
     // printk(KERN_INFO "Hello world!\n");
     proc_file_entry = proc_create("numpagefaults", 0, NULL, &ct_file_ops);
 
-    printf("%u", countPageFault);
+    printk("%u", countPageFault);
     
     return 0;    // Non-zero return means that the module couldn't be loaded.
 }
