@@ -10,10 +10,11 @@ MODULE_DESCRIPTION("A simple numpagefaults module");
 
 unsigned long countPageFault = 0;
 
+
 static int __init numpagefaults_init(void)
 {
     // printk(KERN_INFO "Hello world!\n");
-    proc_file_entry = proc_create("numpagefaults", 0, NULL, &ct_file_ops);
+    // proc_file_entry = proc_create("numpagefaults", 0, NULL, &ct_file_ops);
 
     printk("%u", countPageFault);
     
