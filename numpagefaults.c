@@ -12,13 +12,13 @@ static int __init numpagefaults_init(void)
     return 0;    // Non-zero return means that the module couldn't be loaded.
 }
 
-static void __exit numpagefaults_init(void)
+static void __exit numpagefaults_cleanup(void)
 {
 	printk(KERN_INFO "Cleaning up module.\n");
 	
 }
 
 module_init(numpagefaults_init);
-module_exit(numpagefaults_init);
+module_exit(numpagefaults_cleanup);
 
 MODULE_LICENSE("GPL");
