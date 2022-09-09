@@ -2,9 +2,6 @@
 #include <linux/kernel.h>	// included for KERN_INFO
 #include <linux/init.h>	  // included for __init and __exit macros
 
-#include <linux/seq_file.h>
-#include <linux/vmstat.h>
-
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("PaulRobertDavis");
 MODULE_DESCRIPTION("A simple numpagefaults module");
