@@ -15,7 +15,7 @@ static int __init numpagefaults_init(void)
 static void __exit numpagefaults_init(void)
 {
 	printk(KERN_INFO "Cleaning up module.\n");
-	remove_proc_entry("numpagefaults", NULL)
+	
 }
 
 module_init(numpagefaults_init);
