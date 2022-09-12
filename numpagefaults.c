@@ -8,7 +8,7 @@ MODULE_DESCRIPTION("A simple numpagefaults module");
 
 static int __init numpagefaults_init(void)
 {
-    printk(KERN_INFO "Hello world!\n");
+    printk(KERN_INFO "Hello from numpagefaults\n");
     return 0;    // Non-zero return means that the module couldn't be loaded.
 }
 
