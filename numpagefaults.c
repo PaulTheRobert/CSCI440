@@ -26,21 +26,13 @@ static struct proc_dir_entry* numpagefaults_file;
 
 
 static int print_numpagefaults(struct seq_file *m, void *v){
-//	unsigned long events*[NR_VM_EVENT_ITEMS];
+	unsigned long events[NR_VM_EVENT_ITEMS];
 
-	unsigned long  numpagefault = 999999;
-//	struct memory_data *mem_data;
-	
-//	mem_data = data;
-//	mem_data->sync_count1++;
+	unsigned long  numpagefault = 999999;;
 
-//	all_vm_events(events);
-	 
-//	mem_data->pgfault = events[PGFAULT];
+	seq_printf(m, "%lun", events[PGFAULT]);
 
-//	seq_printf(m, "%llu", events[PGFAULT]);
-//	seq_printf(m, "%llu", events, "PGFAULT");
-	seq_printf(m, "%lun", numpagefault);
+//	seq_printf(m, "%lun", numpagefault);
 	return 0;
 }
 
