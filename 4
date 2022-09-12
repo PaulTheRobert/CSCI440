@@ -1,0 +1,48 @@
+#include <linux/module.h>	// included for all kernel modules
+#include <linux/kernel.h>	// included for KERN_INFO
+#include <linux/init.h>	        // included for __init and __exit macros
+
+#include <linux/fs.h>		// fs
+#include <linux/seq_file.h>	// sequence files
+#include <linux/jiffies.h>	// jiffies - following example from web
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("PaulRobertDavis");
+MODULE_DESCRIPTION("A simple numpagefaults module");
+
+
+static struct proc_file_entry* numpagefaults_file;
+static int print_numpagefaults(struct seq_file *m, void *v){
+	seq_printf(m,"%llun", (unsigned long long) get_jiffies_64());
+	return 0;
+}
+
+static int open_numpagefaults(struct inode *inode, struct file *file){
+	return single_open(file, print_numpagefaults, NULL);
+	return 0;
+}
+
+static const struct file_operations numpagefaults_fops = {
+	.owner = THIS_MODULE,
+	.open = open_numpagefaults,
+	.read = seq_read,
+	.llseek = seq_lseek,
+	.release = single_release,
+}
+
+static int __init numpagefaults_init(void)
+{
+    printk(KERN_INFO "Hello from numpagefaults\n");
+    return 0;    // Non-zero return means that the module couldn't be loaded.
+}
+
+static void __exit numpagefaults_cleanup(void)
+{
+	printk(KERN_INFO "Cleaning up module.\n");
+	
+}
+
+module_init(numpagefaults_init);
+module_exit(numpagefaults_cleanup);
+
+MODULE_LICENSE("GPL");
